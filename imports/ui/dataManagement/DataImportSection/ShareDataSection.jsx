@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PubSub from "pubsub-js";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { useTracker } from "meteor/react-meteor-data";
+import ActionButton from "../../common/ActionButton";
 
 const ShareDataSection = () => {
   const [state, setState] = useState(null);
@@ -18,30 +19,6 @@ const ShareDataSection = () => {
   const shouldShow = () =>
     state === "share-data" || state === "risk-assessment";
 
-  const { route } = useTracker(() => {
-    let route = FlowRouter.getRouteName();
-
-    return { route };
-  }, []);
-
-  const buttonText = () => {
-    switch (route) {
-      case "input-data":
-      case "import-data":
-        return "Share Data";
-      case "risk-assessment":
-        return "Get Risk Analysis";
-      case "manage-data":
-        if (!user && !isLoggingIn) {
-          return "Login";
-          break;
-        }
-
-      default:
-        return "Manage Data";
-    }
-  };
-
   if (!shouldShow()) return <></>;
   return (
     <div className="section">
@@ -52,14 +29,7 @@ const ShareDataSection = () => {
               When you're ready, you can share your data.
               <br />
             </h4>
-            <button
-              className="button w-button"
-              onClick={() => {
-                PubSub.publish("MANAGE_DATA", "save");
-              }}
-            >
-              {buttonText()}
-            </button>
+            <ActionButton state={state} />
           </div>
         </div>
       </div>

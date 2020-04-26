@@ -87,23 +87,28 @@ const RiskAssessmentPage = () => {
         header="Check if You're at Risk"
         subHeader={<SubHeader />}
       />
-      {assessment ? <RiskHeader assessment={assessment} /> : null}
-      <ShowIfNoFiles>
-        <UploadBoxSection
-          headerText={"Upload your "}
-          pageState={"import"}
-          onFileUpload={onFileUpload}
-          user={user}
-        />
-      </ShowIfNoFiles>
-      <DataImportComponent
-        isAssessing={assessment === false}
-        setAssessment={setAssessment}
-        user={user}
-        userId={userId}
-        isLoggingIn={isLoggingIn}
-        uploadedZip={uploadedZip}
-      />
+      {assessment ? (
+        <RiskHeader assessment={assessment} />
+      ) : (
+        <>
+          <ShowIfNoFiles>
+            <UploadBoxSection
+              headerText={"Upload your "}
+              pageState={"import"}
+              onFileUpload={onFileUpload}
+              user={user}
+            />
+          </ShowIfNoFiles>
+          <DataImportComponent
+            isAssessing={assessment === false}
+            setAssessment={setAssessment}
+            user={user}
+            userId={userId}
+            isLoggingIn={isLoggingIn}
+            uploadedZip={uploadedZip}
+          />{" "}
+        </>
+      )}
       <ShareDataSection />
     </>
   );
