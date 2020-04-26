@@ -43,5 +43,5 @@ const MapPage = ({ google }) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: Meteor.settings.googleMapsAPIKey,
+  apiKey: Meteor.settings.public.googleMapsAPIKey,
 })(MapPage);

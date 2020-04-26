@@ -63,7 +63,6 @@ FlowRouter.route("/tutorial", {
     });
   },
 });
-console.log(Meteor.settings);
 
 FlowRouter.route("/manage-data", {
   name: "manage-data",
@@ -77,7 +76,7 @@ FlowRouter.route("/manage-data", {
   },
   script: {
     gmaps:
-      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.googleMapsAPIKey + "&libraries=places",
+      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.public.googleMapsAPIKey + "&libraries=places",
   },
 });
 
@@ -104,7 +103,7 @@ FlowRouter.route("/risk-assessment", {
   },
   script: {
     gmaps:
-      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.googleMapsAPIKey + "&libraries=places",
+      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.public.googleMapsAPIKey + "&libraries=places",
   },
 });
 
@@ -120,7 +119,7 @@ FlowRouter.route("/import-data", {
   },
   script: {
     gmaps:
-      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.googleMapsAPIKey + "&libraries=places",
+      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.public.googleMapsAPIKey + "&libraries=places",
   },
 });
 
@@ -136,7 +135,7 @@ FlowRouter.route("/input-data", {
   },
   script: {
     gmaps:
-      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.googleMapsAPIKey + "&libraries=places",
+      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.public.googleMapsAPIKey + "&libraries=places",
   },
 });
 
