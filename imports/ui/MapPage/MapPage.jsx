@@ -1,3 +1,4 @@
+import { Meteor } from "meteor/meteor";
 import React, { useEffect, useState } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
@@ -42,5 +43,5 @@ const MapPage = ({ google }) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: Meteor.settings.googleMapsAPIKey,
+  apiKey: Meteor.settings.public.googleMapsAPIKey,
 })(MapPage);
