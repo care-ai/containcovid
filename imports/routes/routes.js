@@ -1,5 +1,5 @@
 import React from "react";
-import Meteor from "meteor/meteor";
+import { Meteor } from "meteor/meteor";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import {
   FlowRouterMeta,
@@ -63,6 +63,7 @@ FlowRouter.route("/tutorial", {
     });
   },
 });
+console.log(Meteor.settings);
 
 FlowRouter.route("/manage-data", {
   name: "manage-data",
