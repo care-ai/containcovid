@@ -63,6 +63,7 @@ FlowRouter.route("/tutorial", {
     });
   },
 });
+console.log(Meteor.settings);
 
 FlowRouter.route("/manage-data", {
   name: "manage-data",
