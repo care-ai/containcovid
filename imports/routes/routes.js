@@ -1,5 +1,5 @@
 import React from "react";
-import Meteor from "meteor/meteor";
+import { Meteor } from "meteor/meteor";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import {
   FlowRouterMeta,
