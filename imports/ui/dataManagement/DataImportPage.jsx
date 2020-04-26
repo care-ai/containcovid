@@ -11,6 +11,7 @@ import Modal from "../common/components/Modal";
 import SectionHeaderImport from "./DataImportSection/SectionHeaderImport";
 import UploadBoxSection from "./DataImportSection/UploadBoxSection";
 import ShareDataSection from "./DataImportSection/ShareDataSection";
+import ShowIfNoFiles from "../common/ShowIfNoFiles";
 
 const DataImportPage = () => {
   const [uploadedZip, setUploadedZip] = useState(null);
@@ -86,12 +87,14 @@ const DataImportPage = () => {
         header="Upload Your Google Location History"
         subHeader={<SubHeader />}
       />
-      <UploadBoxSection
-        headerText={"Upload your "}
-        pageState={"import"}
-        onFileUpload={onFileUpload}
-        user={user}
-      />
+      <ShowIfNoFiles>
+        <UploadBoxSection
+          headerText={"Upload your "}
+          pageState={"import"}
+          onFileUpload={onFileUpload}
+          user={user}
+        />
+      </ShowIfNoFiles>
       <DataImportComponent
         user={user}
         userId={userId}
