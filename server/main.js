@@ -18,6 +18,25 @@ Meteor.startup(function () {
       userName
     )}:${encodeURIComponent(password)}@${host}:${port}`;
   }
+
+  BrowserPolicy.framing.disallow();
+  BrowserPolicy.content.allowInlineScripts();
+  BrowserPolicy.content.allowSameOriginForAll();
+  BrowserPolicy.content.allowFontDataUrl();
+
+  const trustedOrigins = [
+    "https://cdnjs.cloudflare.com/",
+    "https://*.googleapis.com/",
+    "https://d3e54v103j8qbb.cloudfront.net/",
+  ];
+
+  let index = 0;
+  while (index < trustedOrigins.length) { 
+    let origin = trustedOrigins[index];
+    BrowserPolicy.content.allowOriginForAll(origin);
+    index++;
+  }
+
 });
 
 Accounts.config({
@@ -25,4 +44,3 @@ Accounts.config({
 
 });
 
-Meteor.startup(() => {});
