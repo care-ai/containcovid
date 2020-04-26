@@ -99,9 +99,6 @@ const DataImportComponent = ({
     setHomeAddresses(homeAd);
     setFiles(mapped);
     setProcessing(false);
-    document
-      .getElementById("edit-data")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const readZipFile = (file) => {

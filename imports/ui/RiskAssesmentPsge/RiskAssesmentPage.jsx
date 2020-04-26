@@ -13,6 +13,7 @@ import UploadBoxSection from "../dataManagement/DataImportSection/UploadBoxSecti
 import ShareDataSection from "../dataManagement/DataImportSection/ShareDataSection";
 import DataImportComponent from "../dataManagement/DataImportComponent";
 import RiskHeader from "./RIskHeader";
+import ShowIfNoFiles from "../common/ShowIfNoFiles";
 
 const RiskAssessmentPage = () => {
   const [uploadedZip, setUploadedZip] = useState(null);
@@ -87,12 +88,14 @@ const RiskAssessmentPage = () => {
         subHeader={<SubHeader />}
       />
       {assessment ? <RiskHeader assessment={assessment} /> : null}
-      <UploadBoxSection
-        headerText={"Upload your "}
-        pageState={"import"}
-        onFileUpload={onFileUpload}
-        user={user}
-      />
+      <ShowIfNoFiles>
+        <UploadBoxSection
+          headerText={"Upload your "}
+          pageState={"import"}
+          onFileUpload={onFileUpload}
+          user={user}
+        />
+      </ShowIfNoFiles>
       <DataImportComponent
         isAssessing={assessment === false}
         setAssessment={setAssessment}
