@@ -210,7 +210,7 @@ const DataImportComponent = ({
 
     setFiles(visits);
   };
-
+  if (isAssessing) return null;
   return (
     <div className="section">
       <div className="container">
