@@ -82,7 +82,6 @@ const Signup = ({
               className="button button-large bg-gradient-4 w-button"
             />
             <label className="w-checkbox field-row">
-              <div className="w-checkbox-input w-checkbox-input--inputType-custom checkbox" />
               <input
                 type="checkbox"
                 id="checkbox"
@@ -91,7 +90,6 @@ const Signup = ({
                 checked={readTC}
                 onChange={() => setReadTC(!readTC)}
                 required
-                style={{ opacity: 0, position: "absolute", zIndex: -1 }}
               />
               <span className="checkbox-label text-small w-form-label">
                 I have read and agree to the{" "}

@@ -1,6 +1,18 @@
 import React from "react";
-
+import { Meteor } from "meteor/meteor";
+import { useTracker } from "meteor/react-meteor-data";
 const Footer = () => {
+  const { user, userId, isLoggingIn } = useTracker(() => {
+    const user = Meteor.user();
+    const userId = Meteor.userId();
+    const isLoggingIn = Meteor.loggingIn();
+
+    return {
+      user,
+      userId,
+      isLoggingIn,
+    };
+  });
   return (
     <>
       <div className="footer">
@@ -38,9 +50,14 @@ const Footer = () => {
                 </div>
                 <div className="footer-menu-grids">
                   <div className="w-layout-grid vertical-menu-grid">
-                    <a href="old-home.html" className="text-link">
-                      Tutorial
-                    </a>
+                    {user ? (
+                      <a
+                        className="text-link"
+                        onClick={(ev) => ev.preventDefault() || Meteor.logout()}
+                      >
+                        Log out
+                      </a>
+                    ) : null}
                     <a href="#" className="text-link">
                       Collaborations
                     </a>
