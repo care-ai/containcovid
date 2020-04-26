@@ -7,8 +7,8 @@ import Login from "./LoginSection/Login";
 import Signup from "./LoginSection/Signup";
 import ForgotPwd from "./LoginSection/Forgot";
 
-const LoginSection = () => {
-  const [state, setState] = useState("login"); //login signup reset
+const LoginSection = ({ loginFormState }) => {
+  const [state, setState] = useState(loginFormState || "login"); //login signup reset
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,23 +22,20 @@ const LoginSection = () => {
     }
   };
 
-   pwTest = (password) => {
-    if (password.length < 8 ) {
+  pwTest = (password) => {
+    if (password.length < 8) {
       return false;
-    }
-    else if ( password.search(/\d/) == -1 ) {
+    } else if (password.search(/\d/) == -1) {
       return false;
-    }
-    else if ( password.search(/[a-zA-Z]/) == -1 ) {
+    } else if (password.search(/[a-zA-Z]/) == -1) {
       return false;
     }
     // non alphanumeric character
-    else if ( password.search(/[^0-9a-zA-Z]/) == -1 ) {
+    else if (password.search(/[^0-9a-zA-Z]/) == -1) {
       return false;
     }
 
     return true;
-
   };
 
   const setError = (message) => toastr.error(message);
@@ -53,13 +50,15 @@ const LoginSection = () => {
       setError("The email " + hasEmail[0]);
       return;
     }
-   
+
     if (!password || !password.length) {
       setError("You need to enter your password");
       return;
     }
-    if ( ! pwTest(password) ) {
-      setError("Password must contain at least 8 characters, 1 letter, 1 number, and 1 special character (e.g: <code>!&*$</code>)");
+    if (!pwTest(password)) {
+      setError(
+        "Password must contain at least 8 characters, 1 letter, 1 number, and 1 special character (e.g: <code>!&*$</code>)"
+      );
 
       return;
     }

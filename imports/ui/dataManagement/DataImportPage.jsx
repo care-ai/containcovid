@@ -81,7 +81,7 @@ const DataImportPage = () => {
   return (
     <>
       <Modal isOpen={showLogin} closeModal={() => setShowLogin(false)}>
-        <LoginSection />
+        <LoginSection loginFormState="signup" />
       </Modal>
       <SectionHeaderImport
         header="Upload Your Google Location History"
