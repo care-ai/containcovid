@@ -66,7 +66,7 @@ const DataManualAddPage = () => {
   return (
     <>
       <Modal isOpen={showLogin} closeModal={() => setShowLogin(false)}>
-        <LoginSection />
+        <LoginSection loginFormState="signup" />
       </Modal>
       <SectionHeaderImport
         header="Enter the places you've been."

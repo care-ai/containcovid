@@ -81,7 +81,7 @@ const RiskAssessmentPage = () => {
   return (
     <>
       <Modal isOpen={showLogin} closeModal={() => setShowLogin(false)}>
-        <LoginSection />
+        <LoginSection loginFormState="signup" />
       </Modal>
       <SectionHeaderImport
         header="Check if You're at Risk"
