@@ -19,6 +19,8 @@ Meteor.methods({
     console.log(diagnosed);
     if (!diagnosed) diagnosed = false;
 
+    check(diagnosed, Boolean); 
+
     let parsedVisits = visits.map((v) => ({
       visitId: v._id + "-" + this.userId,
       location: {
@@ -93,6 +95,25 @@ Meteor.methods({
     );
 
     parsedVisits.forEach((v) => {
+      check(v, {
+        visitId : String,
+        location : {
+          placeId : String,
+          type : String,
+          coordinates: [Number],
+          address: String,
+          name: String
+        },
+        duration : {
+          start: Number,
+          end: Number
+        },
+        placeConfidence : Number,
+        visitConfidence : Number,
+        userId : String,
+        dirty: Match.OneOf(Boolean, null, undefined),
+        removed: Match.OneOf(Boolean, null, undefined)
+      });
       if (v.removed) Visits.remove({ visitId: v.visitId });
       else Visits.upsert({ visitId: v.visitId }, { $set: v });
     });

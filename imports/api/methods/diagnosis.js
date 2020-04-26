@@ -1,8 +1,15 @@
 import { Meteor } from "meteor/meteor";
 import Diagnosis from "../../database/Diagnosis";
+import { check, Match } from "meteor/check";
 
 Meteor.methods({
   addOrEditDiagnostic: function (diagData) {
+    check(diagData, {
+        diagnosed : Match.OneOf(Boolean, null),
+        diagnosisDate : Date,
+        symptomsDate : Date,
+        symptoms : [String]
+    });
     Diagnosis.upsert({ userId: this.userId }, { $set: diagData });
   },
   getSymptoms: function () {
