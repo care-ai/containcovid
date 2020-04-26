@@ -81,7 +81,10 @@ const DataManagementPage = () => {
     <>
       <Modal
         isOpen={showLogin}
-        closeModal={() => (user ? setShowLogin(false) : () => {})}
+        closeModal={() => {
+          setShowLogin(false);
+          if (!user) FlowRouter.go("/");
+        }}
       >
         <LoginSection />
       </Modal>

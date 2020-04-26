@@ -1,5 +1,6 @@
 import React from "react";
-import Meteor from "meteor/meteor";
+import { Meteor } from "meteor/meteor";
+import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import {
   FlowRouterMeta,
@@ -74,10 +75,12 @@ FlowRouter.route("/manage-data", {
       Footer: Footer,
     });
   },
-  script: {
+  script: () => ({
     gmaps:
-      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.googleMapsAPIKey + "&libraries=places",
-  },
+      "https://maps.googleapis.com/maps/api/js?key=" +
+      Meteor.settings.public.googleMapsAPIKey +
+      "&libraries=places",
+  }),
 });
 
 FlowRouter.route("/map", {
@@ -101,10 +104,12 @@ FlowRouter.route("/risk-assessment", {
       Footer: Footer,
     });
   },
-  script: {
+  script: () => ({
     gmaps:
-      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.googleMapsAPIKey + "&libraries=places",
-  },
+      "https://maps.googleapis.com/maps/api/js?key=" +
+      Meteor.settings.public.googleMapsAPIKey +
+      "&libraries=places",
+  }),
 });
 
 FlowRouter.route("/import-data", {
@@ -117,10 +122,12 @@ FlowRouter.route("/import-data", {
       Footer: Footer,
     });
   },
-  script: {
+  script: () => ({
     gmaps:
-      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.googleMapsAPIKey + "&libraries=places",
-  },
+      "https://maps.googleapis.com/maps/api/js?key=" +
+      Meteor.settings.public.googleMapsAPIKey +
+      "&libraries=places",
+  }),
 });
 
 FlowRouter.route("/input-data", {
@@ -133,10 +140,12 @@ FlowRouter.route("/input-data", {
       Footer: Footer,
     });
   },
-  script: {
+  script: () => ({
     gmaps:
-      "https://maps.googleapis.com/maps/api/js?key=" + Meteor.settings.googleMapsAPIKey + "&libraries=places",
-  },
+      "https://maps.googleapis.com/maps/api/js?key=" +
+      Meteor.settings.public.googleMapsAPIKey +
+      "&libraries=places",
+  }),
 });
 
 FlowRouter.route("/patient", {
